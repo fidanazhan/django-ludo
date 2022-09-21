@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <div class="welcome-part">
+            <h2>Hi, {{request.user}} </h2>
+
+            {% if join_request_count == 0 %}
+
+            <h4>There are no game that you want to join.</h4>
+            
+            {% else %}
+            
+            <h4>Here is the game list that you requested to join. </h4>
+
+            {% endif  %}
+
+        </div>
+        
+        <div class="game-available-part">
+
+            {% for join_request in join_requests %}
+            <a href="" class="game-available">
+                <span class="game-type"><i class="fa-solid fa-basketball"></i> {{join_request.game.sport_type}}</span>
+                <span class="game-date"><i class="fa-solid fa-calendar-days"></i>  {{join_request.game.date}}</span>
+                <span class="game-place"><i class="fa-solid fa-building"></i> {{join_request.game.location1}}</span>
+                <span class="game-place2"><i class="fa-solid fa-location-dot"></i> {{join_request.game.location2}}</span>
+                <span class="game-price"><i class="fa-regular fa-money-bill-1"></i> {{join_request.game.price_per_player}}</span>
+                <span class="game-player"><i class="fa-solid fa-person-running"></i> {{join_request.game.player_needed}} player needed</span>
+                <form method="post" action="{% url 'joiner-cancel-request' join_request.game.pk %}">
+                    {% csrf_token %}
+                    <button href="" class="cancel-request-button">Cancel request</button>
+                </form>
+            </a>
+            {% endfor %}
+
+        </div>
+
+
+{% endblock %}

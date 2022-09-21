@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="welcome-part">
+        <h2>Hi, {{request.user}}</h2>
+        <h4>Here is overview of available game for you to participate.</h4>
+    </div>
+    <div class="game-available-part">
+
+        <div class="game-available-detail">
+            <div class="game-type">
+                <span class="game-type-label">Game: </span>
+                <span class="game-type-data">{{ game.sport_type }}</span>
+            </div>
+            <div class="game-date">
+                <span class="game-date-label">Date: </span>
+                <span class="game-date-data">{{ game.date|date:'Y-m-d' }}</span>
+            </div>
+            <div class="game-place">
+                <span class="game-place-label">Place: </span>
+                <span class="game-place-data">{{game.location1}}, {{game.location2}}</span>
+            </div>
+            <div class="game-host">
+                <span class="game-host-label">Host: </span>
+                <span class="game-host-data"><a href="">{{game.arranger}}</a></span>
+            </div>
+            <div class="game-nopo">
+                <span class="game-nopo-label">Player Occupied: </span>
+                <span class="game-nopo-data">{{game.occupied_player}}</span>
+            </div>
+            <div class="game-nopn">
+                <span class="game-nopn-label">Player Needed: </span>
+                <span class="game-nopn-data">{{game.player_needed}}</span>
+            </div>
+            <div class="game-cs">
+                <span class="game-cs-label">Court Status: </span>
+                <span class="game-cs-data">{{game.court_status}}</span>
+            </div>
+            <div class="game-cn">
+                <span class="game-cn-label">Court Name: </span>
+                <span class="game-cn-data">{{game.court_name}}</span>
+            </div>
+            <div class="game-cp">
+                <span class="game-cp-label">Court Price: </span>
+                <span class="game-cp-data">{{game.court_price}}</span>
+            </div>
+            <div class="game-ppp">
+                <span class="game-ppp-label">Price per player: </span>
+                <span class="game-ppp-data">{{game.price_per_player}}</span>
+            </div>
+            <div class="game-join-button">
+
+                <!-- If player still not send  join request -->
+                <form action="{% url 'create-join-request' game.pk%}" method="post">
+                    {% csrf_token %}
+
+                    <input type="hidden" name="next" value="{{ request.path }}">
+
+                    <button type="submit">Join</button>
+                </form>
+
+            </div>
+        </div>
+        
+    </div>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://kit.fontawesome.com/04f8fa261d.js" crossorigin="anonymous"></script>
+
+
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <title>Home | QuackQuack</title>
+</head>
+<body>
+    
+
+    <section class="left-sidebar">
+
+        <nav class="sidebar-menu">
+            <a href="{% url 'dashboard' %}" class="sidebar-link"><i class='bx bx-home'></i>
+                <span>Dashboard</span> 
+            </a>
+            <a href="{% url 'game-list' %}" class="sidebar-link"><i class='bx bxs-user'></i>
+                <span>Game</span> 
+            </a>
+            <a href="{% url 'notification' %}" class="sidebar-link"><i class='bx bx-bell'></i>
+                <span>Notifications</span> 
+            </a>
+            <a href="" class="sidebar-link"><i class='bx bx-envelope' ></i>
+                <span>Profile</span> 
+            </a>
+
+            <a href="" class="sidebar-link"><i class='bx bxs-group' ></i>
+                <span>Competition</span> 
+            </a>
+
+
+            <a href="{% url 'logout' %}" class="sidebar-link logout-link"><i class='bx bx-log-out'></i>
+                <span>Logout</span> 
+            </a>
+
+        </nav>
+    </section>
+    
+    <section class="main">
+        {% block content %}
+
+        {% endblock %}
+    </section>
+
+
+
+    <script src="{% static 'js/main.js'%}"></script>
+</body>
+</html>

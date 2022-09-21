@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="welcome-part">
+    <h2>Hi, {{ request.user }}</h2>
+</div>
+
+<div class="notification-part">
+
+    
+
+    {% for notification in notifications %}
+        {% if notification.receiver == request.user%}
+            {% if notification.notification_types == 1%}
+            <a href="" class="notification-available">
+                <p>
+                    You get a request from {{notification.sender}} to join game {{notification.game.sport_type}} on {{notification.game.date}} at 
+                    {{notification.game.location1}}, {{notification.game.location2}}
+                    <br> 
+                    that host by you.
+                </p>
+            </a>
+            
+            {% elif notification.notification_types == 2 %}
+            <a href="" class="notification-available">
+                <p>
+                    Your request to join {{notification.game.sport_type}} on {{notification.game.date}} at 
+                    {{notification.game.location1}}, {{notification.game.location2}}
+                    <br> 
+                    has been approved by {{notification.game.arranger}}.
+                </p>
+            </a>
+
+            {% elif notification.notification_types == 3%}
+            <a href="" class="notification-available">
+                <p>
+                    You had been removed from game {{notification.game.sport_type}} on {{notification.game.date}} at 
+                    {{notification.game.location1}}, {{notification.game.location2}}
+                    <br> 
+                    by {{notification.game.arranger}}.
+                </p>
+            </a>
+
+            {% elif notification.notification_types == 4 %}
+            <a href="" class="notification-available">
+                <p>
+                    {{notification.sender}} had chose to not join game {{game.sport_type}} on {{game.date}} at 
+                    {{game.location1}}, {{game.location2}}
+                    <br> 
+                    that host by you.
+                </p>
+            </a>
+            {% else %}
+
+            {% endif %}
+        {% else %}
+        <p>You are not authorize to view this page.</p>
+        {% endif %}
+    
+    {% endfor %}
+
+    
+
+</div>
+
+{% endblock %}

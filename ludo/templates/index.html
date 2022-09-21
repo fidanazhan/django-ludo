@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <div class="welcome-part">
+        <h2>Hi, {{ request.user }}</h2>
+        <h4>Here is your dashboard. </h4>
+    </div>
+    <div class="game-analysis-part">
+        <div class="game-box-1 game-joined">
+            <h4>Played Game</h4>
+            <h5>You have played 11 games</h5>
+        </div>
+
+        <div class="game-box-1 game-hosted">
+            <h4>Host Game</h4>
+            <a href="{% url 'host-list' %}">{{game_arranged_count}} games are arranged <span class="game-alert">!</span> </a>
+            
+        </div>
+
+        <div class="game-box-1 game-joined">
+            <h4>Join Game</h4>
+            <a href="{% url 'join-list-joiner' %}">{{join_request}} request are pending <span class="game-alert">!</span></a>
+        </div>
+    </div>
+    <div class="game-analysis-chart">
+        <div class="game-box-2 first-chart">First graph</div>
+        <div class="game-box-2 second-chart">Second graph</div>
+    </div>
+    <div class="all-game-list">
+
+        {% for game in games %}
+        <a href="" class="game-available">
+            <span class="game-type"><i class="fa-solid fa-basketball"></i> {{game.sport_type}} </span>
+            <span class="game-date"><i class="fa-solid fa-calendar-days"></i>  {{game.date}}</span>
+            <span class="game-location"><i class="fa-solid fa-location-dot"></i> {{game.location1}}, {{game.location2}}</span>
+            <span class="game-status">
+                {% if game.is_active == False %}
+                <span class="status-word status-done">Done</span>
+                {% else %}
+                <span class="status-word status-not-done">Incoming</span>
+                {% endif %}
+            </span>
+            {% if game.arranger == request.user %}
+            <span class="game-host"><i class="fa-solid fa-user"></i> You</span>
+            {% else %}
+            <span class="game-host"><i class="fa-solid fa-user"></i> {{game.arranger|capfirst}}</span>
+            <span class="game-unjoin-button">
+                <form action="{% url 'joiner-unjoin' game.pk %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">
+                        Unjoin
+                    </button>
+                </form>
+            </span>
+            {% endif %}
+            </span>
+        </a>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="welcome-part">
+    <h2>Hi, {{request.user}}</h2>
+    <h4>Here is overview of available game for you to participate.</h4>
+</div>
+<div class="search-part">
+    <form action="" method="post">
+        <input type="text" placeholder="Search..">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+
+    <button type="button" id="myBtn" class="create-new-game">
+        Create new game
+    </button>
+</div>
+<div class="game-available-part">
+
+    {% for game in games %}
+    <a href="{% url 'game-detail' game.pk %}" class="game-available">
+        <span class="game-type"><i class="fa-solid fa-basketball"></i> {{ game.sport_type }}</span>
+        <span class="game-date"><i class="fa-solid fa-calendar-days"></i>  {{ game.date|date:'Y-m-d' }}</span>
+        <span class="game-place"><i class="fa-solid fa-building"></i> {{game.location1}}</span>
+        <span class="game-place2"><i class="fa-solid fa-location-dot"></i> {{game.location2}}</span>
+        <span class="game-price"><i class="fa-regular fa-money-bill-1"></i> {{game.price_per_player}}</span>
+        <span class="game-player"><i class="fa-solid fa-person-running"></i> {{game.player_needed}} player needed</span>
+        <span class="game-host"><i class="fa-solid fa-user"></i> {{game.arranger}}</span>
+        <!-- <form action="{% url 'game-bookmark' game.pk %}" method="post">
+            <input type="hidden" name="next" value="{{ request.path }}">
+
+            {% csrf_token %}
+            <button class="saved-button" type="submit">
+                {% if request.user in post.bookmark.all %}
+                <span class="game-bookmark"><i class="fa fa-bookmark blue"></i></span>
+
+                {% else %}
+                <span class="game-bookmark"><i class="fa-regular fa-bookmark "></i></span>
+
+                {% endif %}
+            </button>
+        </form> -->
+    </a>
+    {% endfor %}
+
+</div>
+
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">      
+      <span class="close">&times;</span>
+
+      <div class="game-create">
+        <form action="{% url 'game-list' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+          </form>
+      </div>
+
+      
+
+    </div>
+  
+</div>
+
+{% endblock %}

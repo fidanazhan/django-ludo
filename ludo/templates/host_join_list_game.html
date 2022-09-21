@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        
+        <div class="welcome-part">
+            <h2>Hi, {{request.user}} </h2>
+            <h4>{{ game.player_needed }} more player{{ game.player_needed|pluralize }} needed for this game.</h4>
+
+        </div>
+
+
+        <h3 style="margin-top: 20px;">Join Request</h3>
+
+
+        {% if game.request_user.count != 0 %}
+
+        <h4>Here is the list of people who want to join your game. </h4>
+        
+        {% else %}
+        
+        <h4>There are no request to join your game at this moment</h4>
+
+        {% endif  %}
+
+
+            <div class="join-list">
+                {% for join_request in join_requests %}
+                {% if join_request.is_active == True %}
+                <div class="join-requested">
+                    <p>{{join_request.sender__username|capfirst}} want to join your game.</p>
+
+                    <form action="{% url 'response-join-request' join_request.request_id %}" method="post">
+                        {% csrf_token %}
+
+                        {% if game.player_needed == 0 %}
+                        <button disabled style="font-size:14px; background: rgb(69, 128, 147);" class="decline-button" type="submit" name="host-decision" value="Decline">Capacity players already full. Please remove player first.</button>
+                        {% else %}
+                        <button class="accept-button" type="submit" name="host-decision" value="Accept">Accept</button>
+                        <button class="decline-button" type="submit" name="host-decision" value="Decline">Decline</button>
+                        {% endif %}    
+
+                    </form>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+        <h3>Join Approved</h3>
+            <div class="joined-list">
+
+                {% if game.player_joined.count != 0 %}
+                {% for user in game.player_joined.all %}
+                <div class="join-response">
+                    <p> You have approved for {{user|capfirst}} to join your game.</p>
+                    <form action="{% url 'host-remove-player' user.username game.pk %}" method="post">
+                        {% csrf_token %}
+                        <button class="remove-player-button" type="submit">Remove player from the game</button>
+                    </form>
+                </div>
+                {% endfor %}
+
+                {% else %}
+                <h4>There are no one join the game yet.</h4>
+                {% endif %}
+
+    
+    
+            </div>
+
+
+{% endblock %}

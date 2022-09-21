@@ -1,0 +1,486 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Latin:wght@200&family=Poppins:ital,wght@0,300;1,200&family=Roboto:ital,wght@1,100&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body{
+    background: rgb(255, 255, 255);
+}
+
+.main{
+    height: 100vh;
+    position: relative;
+    top: 0;
+    left: 300px;
+    z-index: 1;
+    padding: 50px;
+    width: calc(100vw - 300px);
+}
+
+
+.left-sidebar{
+    height: 100vh;
+    width: 300px;
+    padding-top: 100px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(242, 249, 249);
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* -------------- LEFT SIDEBAR SECTION --------------- */
+.sidebar-menu{
+    width: 75%;
+    position: relative;
+    height: fit-content;
+    left: 0;
+    padding: 40px 10px;
+    /* padding: 40px 5px; - Tablet View */ 
+    /* border-radius: 0 12px 12px 0; - Tablet View */
+    border-radius: 12px;
+}
+
+.sidebar-link{
+    display: block;
+    font-size: 22px;
+    font-weight: 300;
+    color: black;
+    padding: 15px 10px 15px 15px;
+    text-decoration: none;
+    transition: 0.5s ease-in;
+}
+
+.logout-link{
+    margin-top: 30px;
+}
+
+.sidebar-link .bx{
+    margin-right: 10px;
+}
+
+.sidebar-link:hover{
+    margin-left: 25px;
+}
+/* ---------------- MAIN SECTION FOR INDEX ----------------- */
+.main .game-analysis-part{
+    padding: 15px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.main .game-analysis-part .game-box-1{
+    position: relative;
+    margin-top: 15px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 8px;
+    width: 180px;
+    text-align: center;
+    padding: 8px 0;
+}
+
+.main .game-analysis-part .game-box-1 h4{
+    text-align: center;
+    color: #aaaaaa;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.main .game-analysis-part .game-box-1 a{
+    margin-top: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    color: black;
+}
+
+.main .game-analysis-chart{
+    margin-top: 20px;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.main .game-analysis-chart .game-box-2{
+    height: 180px;
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main .all-game-list{
+    padding: 8px 8px;
+    margin-top: 25px;
+}
+
+.main .all-game-list a{
+    text-decoration: none;
+    color: black;
+    border: 1px solid #aaaaaa;
+    padding: 8px 16px;
+    border-radius: 8px;
+    display: block;
+    width: fit-content;
+    margin: 8px 0 8px 80px;
+}
+
+.main .all-game-list .game-available span{
+    text-align: center;
+    display: inline-block;
+}
+
+.main .all-game-list .game-available .game-type{
+    width: 120px;
+}
+
+.main .all-game-list .game-available .game-date{
+    width: 120px;
+}
+
+.main .all-game-list .game-available .game-location{
+    width: 250px;
+}
+
+.main .all-game-list .game-available .game-status{
+    width: 100px;
+}
+
+.main .all-game-list .game-available .game-status .status-word,
+.main .all-game-list .game-available .game-unjoin-button form button{
+    padding: 4px 16px;
+    border-radius: 4px;
+    color: white;
+    font: 600;
+    cursor: pointer;
+}
+
+.main .all-game-list .game-available .game-status .status-done{
+    background: rgb(110, 197, 110);
+}
+
+.main .all-game-list .game-available .game-status .status-not-done{
+    background: rgb(136, 202, 230);
+} 
+
+.main .all-game-list .game-available .game-host{
+    width: 120px;
+}
+
+.main .all-game-list .game-available .game-unjoin-button form button{
+    background: rgb(230, 101, 101);
+    border: none;
+}
+
+.main .all-game-list .game-available .game-unjoin-button form button:hover{
+    cursor: pointer;
+}
+
+
+/* ---------------- MAIN SECTION FOR GAME PAGE ----------------- */
+.main .welcome-part,
+.main .search-part,
+.main .game-available-part{
+    padding: 5px 0;
+}
+
+.main .search-part form{
+    display: inline-block;
+}
+
+.main .search-part input{   
+    float: left;
+    padding: 6px;
+    border: 1px solid beige;
+    margin-right: 16px;
+    font-size: 17px;
+    border-radius: 8px;
+    width: 500px;
+  }
+
+.main .search-part button {
+    padding: 6px 10px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.main .search-part .create-new-game{
+    float: right;
+}
+
+.game-available-part .game-available{
+    display: block;
+    color: black;
+    text-decoration: none;
+    width: fit-content;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin: 12px 0;
+}
+
+.game-available-part .game-available span{
+    font-size: 16px;
+    padding: 5px;
+    display: inline-block;
+}
+
+.game-available-part .game-available span i{
+    font-size: 14px;
+}
+
+.game-available-part .game-available .game-type{
+    width: 130px;
+}
+
+.game-available-part .game-available .game-date
+{
+    width: 120px;
+}
+
+.game-available-part .game-available .game-price{
+    width: 80px;
+}
+
+
+.game-available-part .game-available .game-place{
+    width: 180px;
+}
+
+.game-available-part .game-available .game-place2{
+    width: 140px;
+}
+
+.game-available-part .game-available .game-player{
+    width: 150px;
+    font-size: 16px;
+}
+
+.game-available-part .game-available .game-host{
+    width: 100px;
+    font-size: 16px;
+}
+
+.game-available-part .game-available form{
+    display: inline-block;
+}
+
+.game-available-part .game-available form button{
+    padding: 4px 16px;
+    background: rgb(38, 136, 189);
+    border: 1px solid rgb(202, 202, 202);
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.game-available-part .game-available form .cancel-request-button{
+    background: rgb(229, 157, 157);
+}
+
+.game-available-part .game-available form .saved-button{
+    background: transparent;
+    border: none;
+    position: relative;
+}
+
+.game-available-part .game-available form .saved-button i{
+    color: black;
+    position: absolute;
+}
+
+.game-available-part .game-available-detail .saved-button .blue{
+    color: rgb(52, 125, 203);
+}
+
+/* ---------------- MAIN SECTION FOR GAME DETAIL PAGE ----------------- */
+
+.game-available-part .game-available-detail{
+    font-size: 20px;
+    margin-left: 100px;
+    margin-top: 20px;
+}
+
+.game-available-part .game-available-detail div{
+    margin: 8px 0;
+}
+
+.game-available-part .game-available-detail .game-host-data a{
+    color: rgb(80, 80, 228);
+    display: inline-block;
+    text-decoration: none;
+    padding: 0;
+    border: none;
+    margin: 0;
+    width: 0;
+}
+
+.game-join-button button{
+    padding: 0;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: transparent;
+    cursor: pointer;
+    width: 200px;
+    height: 40px;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.game-join-button .button-join-2:hover{
+    font-size: 0;
+    background: rgb(255, 157, 157);
+}
+
+.game-join-button .button-join-2:hover:after{
+    content: attr(data-hover);
+    font-size: 16px;
+}
+
+/* -------------------- JOIN -------------------- */
+
+.join-list{
+    padding: 20px 0 10px;
+}
+
+.join-list .join-requested{
+    padding: 5px 0;
+}
+
+.joined-list .join-response{
+    padding: 10px 0 10px;
+}
+
+
+.join-list .join-requested p,
+.join-list .join-requested form,
+.joined-list .join-response p,
+.joined-list .join-response form{
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.join-list .join-requested p{
+    width: 400px;
+}
+
+.join-list .join-requested form{
+    width: 400px;
+    align-items: center;
+}
+
+.join-list .join-requested form button,
+.joined-list .join-response form button{
+    outline: none;
+    padding: 5px 25px;
+    margin: 0 5px;
+    border: 1px solid rgb(208, 208, 208);
+    border-radius: 5px;
+    color: rgb(249, 249, 249);
+    cursor: pointer;
+}
+
+.join-list .join-requested form .accept-button{
+    background: rgb(104, 184, 104);
+}
+
+.join-list .join-requested form .decline-button{
+    background: rgb(250, 151, 136);
+}
+
+.joined-list .join-response form .remove-player-button{
+    background: rgb(240, 131, 114)
+}
+
+/* ----------------- NOTIFICATION ----------------- */
+.notification-part .notification-available{
+    color: black;
+    text-decoration: none;
+}
+
+.notification-part .notification-available p{
+    margin: 5px 0;
+    padding: 8px;
+    width: fit-content;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+/* ----------------- MODAL ----------------- */
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100000; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    transition: all 2s;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    transition: all 0.5s;
+    border-radius: 10px;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1279px) {
+    .left-sidebar, .right-sidebar{
+        display: none;
+    }
+
+    .main{
+        width: 100%;
+        left: 0;
+    }
+
+    .post-title{
+        width: 100%;
+    }
+
+    .user-follow-status{
+        display: none;
+    }
+}

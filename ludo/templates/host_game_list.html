@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content%}
+        <div class="welcome-part">
+            <h2>Hi, {{request.user}}</h2>
+            <h4>Here is the list of game that you host.</h4>
+        </div>
+
+        <div class="game-available-part">
+
+            {% for game in games %}
+            <a href="{% url 'host-join-list' game.pk %}" class="game-available">
+                <span class="game-type"><i class="fa-solid fa-basketball"></i> {{game.sport_type}}</span>
+                <span class="game-date"><i class="fa-solid fa-calendar-days"></i>  {{game.date}}</span>
+                <span class="game-place"><i class="fa-solid fa-building"></i> {{game.location1}}</span>
+                <span class="game-place2"><i class="fa-solid fa-location-dot"></i> {{game.location2}}</span>
+                <span class="game-price"><i class="fa-regular fa-money-bill-1"></i> {{game.price_per_player}}</span>
+                <span class="game-player"><i class="fa-solid fa-person-running"></i> {{game.player_needed}} player needed</span>
+                <form action="">
+                    {% if game.get_request_user_count == 0 %}
+                    <button href="" class="more-detail">0 Request</button>
+                    {% else %}
+                    <button href="{% url 'host-join-list' game.pk %}" class="more-detail">{{game.get_request_user_count}} Request</button>
+                    {% endif %}
+                </form>
+            </a>
+            {% endfor %}
+
+        </div>
+
+{% endblock %}
