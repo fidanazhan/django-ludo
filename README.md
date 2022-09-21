@@ -1,5 +1,3 @@
-Sport App which users can host or participate for sport games in their local area. Created using Django for the backend and simple Html, CSS and Javascript for the frontend
-
 # LUDO - V1
 Sport App which user can host or participate to sport game in local area. Created using django for the backend and simple html css for the frontend.
 
